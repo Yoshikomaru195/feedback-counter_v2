@@ -6,7 +6,7 @@ function save_quality_rating($servicequality, $foodquality, $assortment)
   if (isset($foodquality)) $data["foodquality"] = $foodquality;
   if (isset($assortment)) $data["assortment"] = $assortment;
   $dir = 'data';
-  $file = './data/' . date("j.n.Y") . ".json";
+  $file = './data/' . date("j-n-Y") . ".json";
   if (!is_dir($dir)) {
     mkdir($_SERVER["DOCUMENT_ROOT"] . "/" . $dir . "/");
   }
@@ -19,19 +19,14 @@ function save_quality_rating($servicequality, $foodquality, $assortment)
   if (file_exists($file)) {
     $jsonfiledata = file_get_contents($file);
     $jsonarray = json_decode($jsonfiledata, true);
-
     foreach ($data as $key => $value) {
       $jsonarray[$key][$value]++;
     }
-    $jsondata = data_to_json($jsonarray);
+    $jsondata = json_encode($jsonarray);
     $jsonfile = fopen($file, "w+");
     fwrite($jsonfile, $jsondata);
     fclose($jsonfile);
   }
-}
-function data_to_json($data)
-{
-  return json_encode($data);
 }
 function generate_json()
 {
@@ -44,10 +39,7 @@ function generate_json()
   $jsondata = json_encode($template);
   return $jsondata;
 }
-save_quality_rating(
-  $_POST["servicequality"],
-  $_POST["foodquality"],
-  $_POST["assortment"]
-);
+
+save_quality_rating($_POST["servicequality"],  $_POST["foodquality"],  $_POST["assortment"]);
 
 echo '<script> location.href= "/thx.html";</script>';
