@@ -1,18 +1,20 @@
 <?php
+include_once 'dataworker.php';
+
 function statisticoneday()
 {
   $dir = 'data';
   $file = './data/' . date("j-n-Y") . ".json";
   if (!is_dir($dir)) {
-    return "static not found";
+    echo "static not found";
+    return;
   }
   $jsonfiledata = file_get_contents($file);
   $jsonarray = json_decode($jsonfiledata, true);
   return $jsonarray;
 }
 $data = statisticoneday();
-
-
+$mmdays = get_html_min_max_date();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,9 +27,15 @@ $data = statisticoneday();
 
 <body>
 
+  <form action="/static.php" method="POST">
+    <label for="dateone">От: </label>
+    <input type="date" name="firstdate" id="dateone" value="<? echo date("Y-m-d"); ?>" min="<? echo $mmdays[0] ?>" max="<? echo $mmdays[1] ?>">
+    <span></span>
+    <?php ?>
+  </form>
 
-  <?php
-  ?>
+
+
 </body>
 
 </html>
