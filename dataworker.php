@@ -49,20 +49,32 @@ function get_min_max_date()
 function get_html_min_max_date()
 {
     $mm = get_min_max_date();
-    $d1 = explode("-", $mm[0]);
-    $d2 = explode("-", $mm[1]);
+    $date1 = date_create_from_format("j-n-Y", $mm[0]);
+    $date2 = date_create_from_format("j-n-Y", $mm[1]);
+    $mm[0] = date_format($date1, "Y-m-d");
+    $mm[1] = date_format($date2, "Y-m-d");
+    return $mm;
+}
 
-    if (strlen($d1[1]) == 1) $d1[1] = "0" . $d1[1];
-    if (strlen($d2[1]) == 1) $d2[1] = "0" . $d2[1];
-    if (strlen($d1[0]) == 1) $d1[0] = "0" . $d1[0];
-    if (strlen($d2[0]) == 1) $d2[0] = "0" . $d2[0];
+function statisticoneday()
+{
+    $dir = 'data';
+    $file = './data/' . date("j-n-Y") . ".json";
+    if (!is_dir($dir)) {
+        echo "static not found";
+        return;
+    }
+    $jsonfiledata = file_get_contents($file);
+    $jsonarray = json_decode($jsonfiledata, true);
+    return $jsonarray;
+}
 
-    $rfd1 = $d1[2] . "-" . $d1[1] . "-" . $d1[0];
-    $rfd2 = $d2[2] . "-" . $d2[1] . "-" . $d2[0];
-
-    $res = array();
-    $res[] = $rfd1;
-    $res[] = $rfd2;
-
-    return $res;
+function test($x)
+{
+    return $x;
+}
+function test2($x, $y)
+{
+    $x = $x . $y;
+    return $x;
 }

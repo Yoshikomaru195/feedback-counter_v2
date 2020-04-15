@@ -1,21 +1,14 @@
 <?php
 include_once 'dataworker.php';
 
-function statisticoneday()
-{
-  $dir = 'data';
-  $file = './data/' . date("j-n-Y") . ".json";
-  if (!is_dir($dir)) {
-    echo "static not found";
-    return;
-  }
-  $jsonfiledata = file_get_contents($file);
-  $jsonarray = json_decode($jsonfiledata, true);
-  return $jsonarray;
-}
-$data = statisticoneday();
 $mmdays = get_html_min_max_date();
-var_dump($_POST)
+
+if ($_POST["seconddate"] == "") {
+  $x = test($_POST["firstdate"]);
+} else {
+  $x = test2($_POST["firstdate"], $_POST["seconddate"]);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,8 +20,7 @@ var_dump($_POST)
 </head>
 
 <body>
-
-  <form action="/static.php" method="POST">
+  <form action="/stats.php" method="POST">
     <label for="oneday" onclick="disableseconddate()">
       <input type="checkbox" id="oneday"> За один день?
     </label>
@@ -46,12 +38,11 @@ var_dump($_POST)
     <br>
     <input type="submit">
   </form>
-
+  <?php echo $x ?>
   <script>
     function valid_date() {
       let done = document.getElementById("dateone"),
         dtwo = document.getElementById("datetwo");
-
       dtwo.value = done.value;
       dtwo.min = done.value;
     }
