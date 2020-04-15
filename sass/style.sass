@@ -1,0 +1,173 @@
+*
+  box-sizing: border-box
+
+body
+  font-family: sans-serif
+
+input
+  display: none
+
+#sqgood:checked ~ #sqbtn__good, #fqgood:checked ~ #fqbtn__good, #sqnormal:checked ~ #sqbtn__medium, #sqbad:checked ~ #sqbtn__bad, #fqnormal:checked ~ #fqbtn__medium, #fqbad:checked ~ #fqbtn__bad, #agood:checked ~ #abtn__good, #anormal:checked ~ #abtn__medium, #abad:checked ~ #abtn__bad
+  opacity: 1
+
+.button__submit-active
+  display: block
+  margin: auto
+  background-color: #2c58eb
+  opacity: 1
+  box-shadow: 0px 0px 4px 2px #0070d2
+
+.logo
+  margin: auto
+  margin-top: 20px
+  max-width: 500px
+  & img
+    max-width: 100%
+
+.feedback__title
+  margin-bottom: 50px
+  font-weight: 400
+  font-size: 22px
+  text-align: center
+    
+.button
+  display: block
+  padding: 10px 15px
+  font-weight: 700
+  outline: none
+  font-size: 25px
+  cursor: pointer
+  color: white
+  text-decoration: none
+  border-width: 2px 0
+  border-style: solid none
+  border-radius: 6px
+  transition: 0.2s
+  &__good
+    font-weight: 400
+    background: rgb(64,199,129)
+    box-shadow: 0 -3px rgb(53,167,110) inset
+  &__medium
+    color: black
+    background: #aaaaaa 
+    font-weight: 400
+    border: 1px solid rgba(0,0,0,.4)
+  &__bad
+    border: 2px solid #F64C2B
+    background: #F45A38
+    font-weight: 400
+  &__submit
+    display: block
+    margin: auto
+    background-color: #2c58eb
+    opacity: 0.6
+
+.row
+  display: flex
+  max-width: 100%
+  margin-bottom: 15px
+  justify-content: center
+  align-items: center
+  &:last-child
+    margin-bottom: 30px
+  &-buttons
+    display: flex
+    justify-content: space-between
+    align-items: center
+    &__button
+      opacity: 0.6
+    &__title
+      display: block
+      width: 150px
+      text-align: center
+    &__item
+      margin-right: 10px
+      justify-content: center
+      text-align: center
+
+.container
+  margin: auto
+  max-width: 1600px
+
+.block-thx
+  position: absolute
+  top: 50%
+  left: 50%
+  margin-right: -50%
+  transform: translate(-50%, -50%)
+
+@media (max-width: 1200px)
+  .container
+    max-width: 900px
+
+@media (max-width: 736px)
+  .container 
+    max-width: 90%
+  .logo
+    margin-top: 20px
+    max-width: 300px
+  .title
+    margin-bottom: 20px
+    font-size: 15px
+  .row
+    &:last-child
+      margin-bottom: 25px
+    &-buttons
+      flex-wrap: wrap
+      &__title
+        margin: auto
+        margin-bottom: 15px
+        width: 100%
+      &__item
+        &:first-child
+          width: 100%
+        &:last-child
+          margin-right: 0
+
+@media (max-width: 595px)
+  .feedback__title
+    font-size: 16px
+    margin-bottom: 25px
+  .button
+    font-size: 20px
+    font-weight: 700
+  .row
+    &:last-child
+      margin-bottom: 20px
+    &-buttons
+      justify-content: center
+      &__title
+        margin-bottom: 8px
+
+@media (max-width: 595px)
+  .feedback__title
+    margin-bottom: 15px
+  .row
+    &:last-child
+      margin-bottom: 10px
+    &-buttons
+      &__button
+        font-size: 15px
+
+@media (max-width: 418px)
+  .button
+    display: block
+    padding: 0
+    width: 200px
+    height: 40px
+    padding-top: 10px
+    &__submit
+      font-size: 18px
+      padding-top: 0
+      &-active 
+        padding-top: 0
+        font-size: 18px
+  .title
+    font-size: 12px
+  .row
+    &-buttons
+      flex-direction: column
+      &__button
+        margin-bottom: 10px
+      &__item
+        margin-right: 0
