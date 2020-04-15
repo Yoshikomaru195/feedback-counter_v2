@@ -15,6 +15,7 @@ function statisticoneday()
 }
 $data = statisticoneday();
 $mmdays = get_html_min_max_date();
+var_dump($_POST)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,12 +48,6 @@ $mmdays = get_html_min_max_date();
   </form>
 
   <script>
-    let time = Date.now(),
-      year = time.getFullYear();
-
-
-    time
-
     function valid_date() {
       let done = document.getElementById("dateone"),
         dtwo = document.getElementById("datetwo");
