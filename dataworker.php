@@ -49,21 +49,36 @@ function get_min_max_date()
 function get_html_min_max_date()
 {
     $mm = get_min_max_date();
-    $date1 = date_create_from_format("j-n-Y", $mm[0]);
-    $date2 = date_create_from_format("j-n-Y", $mm[1]);
-    $mm[0] = date_format($date1, "Y-m-d");
-    $mm[1] = date_format($date2, "Y-m-d");
+    $mm[0] = from_php_std_to_html($mm[0]);
+    $mm[1] = from_php_std_to_html($mm[1]);
     return $mm;
 }
 
-function statisticoneday()
+function from_html_std_to_php($date)
+{
+    $xdate = date_create_from_format("Y-m-d", $date);
+    $resdate = date_format($xdate, "j-n-Y");
+    return $resdate;
+}
+function from_php_std_to_html($date)
+{
+    $xdate = date_create_from_format("j-n-Y", $date);
+    $resdate = date_format($xdate, "Y-m-d");
+    return $resdate;
+}
+
+function statisticoneday($date)
 {
     $dir = 'data';
-    $file = './data/' . date("j-n-Y") . ".json";
     if (!is_dir($dir)) {
         echo "static not found";
-        return;
+        return "Папки статистистик не найдена!";
     }
+    $file = './data/' . $date . ".json";
+    if (!file_exists($file)) {
+        return "На сегодня нет статистики!";
+    }
+
     $jsonfiledata = file_get_contents($file);
     $jsonarray = json_decode($jsonfiledata, true);
     return $jsonarray;
