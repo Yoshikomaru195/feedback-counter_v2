@@ -35,6 +35,7 @@ $date = valid_post();
   </form>
   <?php
   var_dump($date);
+  $stats = get_statistic($date);
   if (gettype($date) == "string") {
     echo "<h3>" . $date . "</h3>";
   }
@@ -43,7 +44,6 @@ $date = valid_post();
   } else {
     echo "error";
   }
-  readfiles_from_to($date);
   ?>
   <script>
     function valid_date() {

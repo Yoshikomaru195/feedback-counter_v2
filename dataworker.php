@@ -124,6 +124,18 @@ function get_statistic($dates)
         }
     }
     if (count($dates) == 2) {
+        $files = readfiles_from_to($dates);
+        $stats = generate_array_json();
+        foreach ($files as $ikey => $ivalue) {
+            $json_content = file_get_contents("./data/" . $ivalue);
+            $json_data = json_decode($json_content, true);
+            foreach ($json_data as $keyone => $valueone) {
+                foreach ($json_data[$keyone] as $keytwo => $valuetwo) {
+                    $stats[$keyone][$keytwo] = $stats[$keyone][$keytwo] + $json_data[$keyone][$keytwo];
+                }
+            }
+        }
+        return $stats;
     }
 }
 function readfiles_from_to($dates)
@@ -144,4 +156,19 @@ function readfiles_from_to($dates)
         $partfiles[] = $files[$start] . ".json";
     }
     return $partfiles;
+}
+function generate_array_json()
+{
+    $template = array(
+        "servicequality" => ["good" => 0, "normal" => 0, "bad" => 0],
+        "foodquality" => ["good" => 0, "normal" => 0, "bad" => 0],
+        "assortment" => ["good" => 0, "normal" => 0, "bad" => 0]
+    );
+
+    return $template;
+}
+
+function br()
+{
+    echo "<br>";
 }
