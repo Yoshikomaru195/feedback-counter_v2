@@ -167,8 +167,3 @@ function generate_array_json()
 
     return $template;
 }
-
-function br()
-{
-    echo "<br>";
-}
