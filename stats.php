@@ -43,7 +43,7 @@ $date = valid_post();
   } else {
     echo "error";
   }
-  readfiles_from_to($dates);
+  readfiles_from_to($date);
   ?>
   <script>
     function valid_date() {

@@ -136,10 +136,12 @@ function readfiles_from_to($dates)
             $start = $i;
         }
         if ($files[$i] == $dates[1]) {
-            $end = $i;
+            $end = $i + 1;
         }
-        echo $files[$i] . "<br>";
-        echo "<br>";
     }
-    echo "start = " . $start . "<br>end = " . $end;
+    $partfiles = array();
+    for ($start; $start < $end; $start++) {
+        $partfiles[] = $files[$start] . ".json";
+    }
+    return $partfiles;
 }
