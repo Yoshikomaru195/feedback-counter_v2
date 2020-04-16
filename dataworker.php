@@ -89,11 +89,11 @@ function statisticoneday($date)
 function valid_post()
 {
     if ($_POST["firstdate"] != "") {
-        $x1 = $_POST["firstdate"];
+        $x1 = from_html_std_to_php($_POST["firstdate"]);
     }
     if ($_POST["firstdate"] != "" && $_POST["seconddate"] != "") {
-        $x1 = $_POST["firstdate"];
-        $x2 = $_POST["seconddate"];
+        $x1 = from_html_std_to_php($_POST["firstdate"]);
+        $x2 = from_html_std_to_php($_POST["seconddate"]);
         $dates[] = $x1;
         $dates[] = $x2;
         return $dates;
@@ -111,12 +111,35 @@ function valid_post()
     }
 }
 
-function test($x)
+function get_statistic($dates)
 {
-    return $x;
+    if (count($dates) == 1) {
+        $file = './data/' . $dates[0] . ".json";
+        if ($filedata = file_get_contents($file) !== FALSE) {
+            if ($jsondata = json_encode($filedata) !== FALSE) {
+                return $jsondata;
+            } else {
+                echo "Error to readfile";
+            }
+        }
+    }
+    if (count($dates) == 2) {
+    }
 }
-function test2($x, $y)
+function readfiles_from_to($dates)
 {
-    $x = $x . $y;
-    return $x;
+    $start = 0;
+    $end = 0;
+    $files = sorted_str_date_array();
+    for ($i = 0; $i < count($files); $i++) {
+        if ($files[$i] == $dates[0]) {
+            $start = $i;
+        }
+        if ($files[$i] == $dates[1]) {
+            $end = $i;
+        }
+        echo $files[$i] . "<br>";
+        echo "<br>";
+    }
+    echo "start = " . $start . "<br>end = " . $end;
 }

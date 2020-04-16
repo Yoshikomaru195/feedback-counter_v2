@@ -2,8 +2,8 @@
 include_once 'dataworker.php';
 
 $mmdays = get_html_min_max_date();
-
 $date = valid_post();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +43,7 @@ $date = valid_post();
   } else {
     echo "error";
   }
+  readfiles_from_to($dates);
   ?>
   <script>
     function valid_date() {
