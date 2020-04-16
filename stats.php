@@ -3,27 +3,6 @@ include_once 'dataworker.php';
 
 $mmdays = get_html_min_max_date();
 
-function valid_post()
-{
-  if ($_POST["firstdate"] != "") {
-    $x1 = $_POST["firstdate"];
-  }
-  if ($_POST["firstdate"] != "" && $_POST["seconddate"] != "") {
-    $x1 = $_POST["firstdate"];
-    $x2 = $_POST["seconddate"];
-  }
-  if (($_POST["firstdate"] == "" && $_POST["seconddate"] != "")) {
-    echo 'Ошибка:<br>
-    Если это произошло и вы не знаете в чём дело, обратитесь авторам, либо
-    перезагрузите страницу без повтора отравки<br>
-    $_POST["firstdate"] == "" but $_POST["seconddate"] != ""';
-  }
-  if ($_POST["firstdate"] == "" && $_POST["seconddate"] == "") {
-    $x1 = date("j-n-Y");
-    $date = statisticoneday($x1);
-    return $date;
-  }
-}
 $date = valid_post();
 ?>
 <!DOCTYPE html>
@@ -55,8 +34,14 @@ $date = valid_post();
     <input type="submit">
   </form>
   <?php
+  var_dump($date);
   if (gettype($date) == "string") {
     echo "<h3>" . $date . "</h3>";
+  }
+  if (gettype($date) == "array") {
+    include_once("tabletemplate.php");
+  } else {
+    echo "error";
   }
   ?>
   <script>

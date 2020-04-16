@@ -84,6 +84,33 @@ function statisticoneday($date)
     return $jsonarray;
 }
 
+
+
+function valid_post()
+{
+    if ($_POST["firstdate"] != "") {
+        $x1 = $_POST["firstdate"];
+    }
+    if ($_POST["firstdate"] != "" && $_POST["seconddate"] != "") {
+        $x1 = $_POST["firstdate"];
+        $x2 = $_POST["seconddate"];
+        $dates[] = $x1;
+        $dates[] = $x2;
+        return $dates;
+    }
+    if (($_POST["firstdate"] == "" && $_POST["seconddate"] != "")) {
+        return 'Ошибка:<br>
+    Если это произошло и вы не знаете в чём дело, обратитесь авторам, либо
+    перезагрузите страницу без повтора отравки<br>
+    $_POST["firstdate"] == "" but $_POST["seconddate"] != ""';
+    }
+    if ($_POST["firstdate"] == "" && $_POST["seconddate"] == "") {
+        $x1 = date("j-n-Y");
+        $date = statisticoneday($x1);
+        return $date;
+    }
+}
+
 function test($x)
 {
     return $x;
