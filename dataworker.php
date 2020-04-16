@@ -66,7 +66,12 @@ function from_php_std_to_html($date)
     $resdate = date_format($xdate, "Y-m-d");
     return $resdate;
 }
-
+function from_html_std_to_humaneye($date)
+{
+    $xdate = date_create_from_format("Y-m-d", $date);
+    $resdate = date_format($xdate, "d-m-Y");
+    return $resdate;
+}
 function statisticoneday($date)
 {
     $dir = 'data';
@@ -88,15 +93,20 @@ function statisticoneday($date)
 
 function valid_post()
 {
-    if ($_POST["firstdate"] != "") {
+    $dates = array();
+    if ($_POST["firstdate"] != "" && $_POST["seconddate"] == "") {
         $x1 = from_html_std_to_php($_POST["firstdate"]);
+        $dates[] = $x1;
+        $stats = get_statistic($dates);
+        return $stats;
     }
     if ($_POST["firstdate"] != "" && $_POST["seconddate"] != "") {
         $x1 = from_html_std_to_php($_POST["firstdate"]);
         $x2 = from_html_std_to_php($_POST["seconddate"]);
         $dates[] = $x1;
         $dates[] = $x2;
-        return $dates;
+        $stats = get_statistic($dates);
+        return $stats;
     }
     if (($_POST["firstdate"] == "" && $_POST["seconddate"] != "")) {
         return 'Ошибка:<br>
@@ -115,13 +125,9 @@ function get_statistic($dates)
 {
     if (count($dates) == 1) {
         $file = './data/' . $dates[0] . ".json";
-        if ($filedata = file_get_contents($file) !== FALSE) {
-            if ($jsondata = json_encode($filedata) !== FALSE) {
-                return $jsondata;
-            } else {
-                echo "Error to readfile";
-            }
-        }
+        $filedata = file_get_contents($file);
+        $jsondata = json_decode($filedata, true);
+        return $jsondata;
     }
     if (count($dates) == 2) {
         $files = readfiles_from_to($dates);
@@ -166,4 +172,19 @@ function generate_array_json()
     );
 
     return $template;
+}
+function initdate()
+{
+    $fd = $_POST["firstdate"];
+    $sd = $_POST["seconddate"];
+
+    if ($fd != "" && $sd != "") {
+        $dates[] = from_html_std_to_humaneye($fd);
+        $dates[] = from_html_std_to_humaneye($sd);
+        return $dates;
+    }
+    if ($fd == "" && $sd == "") {
+        return date("d-m-Y");
+    }
+    if ($sd == "") return from_html_std_to_humaneye($fd);
 }

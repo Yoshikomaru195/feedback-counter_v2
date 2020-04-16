@@ -6,7 +6,7 @@ function save_quality_rating($servicequality, $foodquality, $assortment)
   if (isset($foodquality)) $data["foodquality"] = $foodquality;
   if (isset($assortment)) $data["assortment"] = $assortment;
 
-  if (count($data)) return;
+  if (count($data) == 0) return;
 
   $dir = 'data';
   $file = './data/' . date("j-n-Y") . ".json";

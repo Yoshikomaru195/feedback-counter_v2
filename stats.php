@@ -2,8 +2,8 @@
 include_once 'dataworker.php';
 
 $mmdays = get_html_min_max_date();
-$date = valid_post();
-
+$date = initdate();
+$stats = valid_post();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,13 +33,15 @@ $date = valid_post();
     <br>
     <input type="submit">
   </form>
+  <br>
+  <br>
   <?php
-  var_dump($date);
-  $stats = get_statistic($date);
-  if (gettype($date) == "string") {
-    echo "<h3>" . $date . "</h3>";
-  }
-  if (gettype($date) == "array") {
+
+  if (gettype($stats) == "string") {
+    echo "<h3>" . $stats . "</h3>";
+  } elseif (gettype($stats) == "array") {
+    if (gettype($date) == "string") echo "Статистика за $date";
+    if (gettype($date) == "array") echo "Статистика от $date[0] до $date[1]";
     include_once("tabletemplate.php");
   } else {
     echo "error";

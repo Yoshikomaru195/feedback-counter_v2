@@ -8,21 +8,21 @@
     <tbody>
         <tr>
             <td>Качество обслуживания</td>
-            <td><?php echo "качество1-хорошо"; ?></td>
-            <td><?php echo "качество1-нормально"; ?></td>
-            <td><?php echo "качество1-плохо"; ?></td>
+            <td><?php echo $stats["servicequality"]["good"]; ?></td>
+            <td><?php echo $stats["servicequality"]["normal"]; ?></td>
+            <td><?php echo $stats["servicequality"]["bad"]; ?></td>
         </tr>
         <tr>
             <td>Качество пищи</td>
-            <td><?php echo "качество2-хорошо"; ?></td>
-            <td><?php echo "качество2-нормально"; ?></td>
-            <td><?php echo "качество2-плохо"; ?></td>
+            <td><?php echo $stats["foodquality"]["good"]; ?></td>
+            <td><?php echo $stats["foodquality"]["normal"]; ?></td>
+            <td><?php echo $stats["foodquality"]["bad"]; ?></td>
         </tr>
         <tr>
             <td>Ассортимент</td>
-            <td><?php echo "качество3-хорошо"; ?></td>
-            <td><?php echo "качество3-нормально"; ?></td>
-            <td><?php echo "качество3-плохо"; ?></td>
+            <td><?php echo $stats["assortment"]["good"]; ?></td>
+            <td><?php echo $stats["assortment"]["normal"]; ?></td>
+            <td><?php echo $stats["assortment"]["bad"]; ?></td>
         </tr>
     </tbody>
 </table>
