@@ -139,7 +139,7 @@ input {
 
 .block-thx {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
   margin-right: -50%;
   -webkit-transform: translate(-50%, -50%);
@@ -248,6 +248,17 @@ input {
   }
   .row-buttons__item {
     margin-right: 0;
+  }
+  .block-thx {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-right: -50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  .block-thx__title {
+    font-size: 24px;
   }
 }
 /*# sourceMappingURL=style.css.map */

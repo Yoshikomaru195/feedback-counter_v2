@@ -6,18 +6,18 @@ $date = initdate();
 $stats = valid_post();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Statistics</title>
+  <title>Статистика</title>
 </head>
 
 <body>
   <form action="/stats.php" method="POST">
     <label for="oneday" onclick="disableseconddate()">
-      <input type="checkbox" id="oneday"> За один день?
+      <input type="checkbox" id="oneday">За день
     </label>
     <br>
     <br>
