@@ -17,7 +17,7 @@ $stats = valid_post();
 </head>
 
 <body>
-  
+
   <div class="container">
 
     <div class="block-calendar">
@@ -47,8 +47,8 @@ $stats = valid_post();
     if (gettype($stats) == "string") {
       echo "<h3>" . $stats . "</h3>";
     } elseif (gettype($stats) == "array") {
-      if (gettype($date) == "string") echo "Статистика за $date";
-      if (gettype($date) == "array") echo "Статистика от $date[0] до $date[1]";
+      if (gettype($date) == "string") echo "<h3>Статистика за $date</h3>";
+      if (gettype($date) == "array") echo "<h3>Статистика от $date[0] до $date[1]</h3>";
       include_once("tabletemplate.php");
     } else {
       echo "error";
