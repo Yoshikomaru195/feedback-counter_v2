@@ -1,3 +1,6 @@
+<?php
+include_once("creatfile.php");
+?>
 <!DOCTYPE html>
 <html lang="ru">
 

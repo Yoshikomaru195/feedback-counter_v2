@@ -1,4 +1,5 @@
 <?php
+include_once("creatfile.php");
 function save_quality_rating($servicequality, $foodquality, $assortment)
 {
   $data = array();

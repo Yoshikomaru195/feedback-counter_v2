@@ -4,6 +4,7 @@ include_once 'dataworker.php';
 $mmdays = get_html_min_max_date();
 $date = initdate();
 $stats = valid_post();
+include_once("creatfile.php");
 ?>
 <!DOCTYPE html>
 <html lang="ru">
