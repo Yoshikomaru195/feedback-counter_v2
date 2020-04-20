@@ -1,5 +1,16 @@
 <?php
 create_file_data();
+function generate_json()
+{
+  $template = array(
+    "servicequality" => ["good" => 0, "normal" => 0, "bad" => 0],
+    "foodquality" => ["good" => 0, "normal" => 0, "bad" => 0],
+    "assortment" => ["good" => 0, "normal" => 0, "bad" => 0]
+  );
+
+  $jsondata = json_encode($template);
+  return $jsondata;
+}
 function create_file_data()
 {
   $dir = 'data';
