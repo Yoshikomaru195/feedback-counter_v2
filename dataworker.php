@@ -7,9 +7,7 @@ function get_name_files()
         echo "Statistic not found";
         return;
     }
-
     $files = array();
-
     if ($handle = opendir($dir)) {
         while (false !== ($entry = readdir($handle))) {
             if ($entry != "." && $entry != "..") {
@@ -24,11 +22,9 @@ function get_name_files()
     }
     return $files;
 }
-
 function sorted_str_date_array()
 {
     $files =  get_name_files();
-
     usort($files, function ($a, $b) {
         $dateTimestamp1 = strtotime($a);
         $dateTimestamp2 = strtotime($b);
@@ -36,7 +32,6 @@ function sorted_str_date_array()
     });
     return $files;
 }
-
 function get_min_max_date()
 {
     $files = sorted_str_date_array();
@@ -45,7 +40,6 @@ function get_min_max_date()
     $minmax[] = $files[count($files) - 1];
     return $minmax;
 }
-
 function get_html_min_max_date()
 {
     $mm = get_min_max_date();
@@ -53,7 +47,6 @@ function get_html_min_max_date()
     $mm[1] = from_php_std_to_html($mm[1]);
     return $mm;
 }
-
 function from_html_std_to_php($date)
 {
     $xdate = date_create_from_format("Y-m-d", $date);
@@ -83,14 +76,10 @@ function statisticoneday($date)
     if (!file_exists($file)) {
         return "На сегодня нет статистики!";
     }
-
     $jsonfiledata = file_get_contents($file);
     $jsonarray = json_decode($jsonfiledata, true);
     return $jsonarray;
 }
-
-
-
 function valid_post()
 {
     $dates = array();
@@ -120,7 +109,6 @@ function valid_post()
         return $date;
     }
 }
-
 function get_statistic($dates)
 {
     if (count($dates) == 1) {
