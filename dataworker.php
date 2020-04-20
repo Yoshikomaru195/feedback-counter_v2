@@ -1,5 +1,4 @@
 <?php
-
 function get_name_files()
 {
     $dir = 'data';
