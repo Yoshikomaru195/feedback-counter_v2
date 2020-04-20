@@ -1,8 +1,8 @@
 <table>
     <thead>
         <th></th>
-        <th>Хорошо<br></th>
-        <th>Нормально</th>
+        <th>Отлично<br></th>
+        <th>Удовлетворительно</th>
         <th>Плохо</th>
     </thead>
     <tbody>
