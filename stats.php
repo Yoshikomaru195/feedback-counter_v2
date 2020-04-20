@@ -12,41 +12,51 @@ $stats = valid_post();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Статистика</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/normalize.css">
 </head>
 
 <body>
-  <form action="/stats.php" method="POST">
-    <label for="oneday" onclick="disableseconddate()">
-      <input type="checkbox" id="oneday">За день
-    </label>
-    <br>
-    <br>
-    <label for="dateone">От: </label>
-    <input onchange="valid_date()" type="date" name="firstdate" id="dateone" value="<? echo $mmdays[1] ?>" min="<? echo $mmdays[0] ?>" max="<? echo $mmdays[1] ?>">
-    <span></span>
-    <br>
-    <br>
-    <label for="datetwo">До: </label>
-    <input type="date" name="seconddate" id="datetwo" value="<? echo $mmdays[1] ?>" min="<? echo $mmdays[0] ?>" max="<? echo $mmdays[1] ?>">
-    <span></span>
-    <br>
-    <br>
-    <input type="submit">
-  </form>
-  <br>
-  <br>
-  <?php
+  
+  <div class="container">
 
-  if (gettype($stats) == "string") {
-    echo "<h3>" . $stats . "</h3>";
-  } elseif (gettype($stats) == "array") {
-    if (gettype($date) == "string") echo "Статистика за $date";
-    if (gettype($date) == "array") echo "Статистика от $date[0] до $date[1]";
-    include_once("tabletemplate.php");
-  } else {
-    echo "error";
-  }
-  ?>
+    <div class="block-calendar">
+      <form class="stats__calendar" action="/stats.php" method="POST">
+        <label for="oneday" onclick="disableseconddate()">
+          <input type="checkbox" id="oneday">За день
+        </label>
+        <br>
+        <br>
+        <label for="dateone">От: </label>
+        <input class="stats__input" onchange="valid_date()" type="date" name="firstdate" id="dateone" value="<? echo $mmdays[1] ?>" min="<? echo $mmdays[0] ?>" max="<? echo $mmdays[1] ?>">
+        <span></span>
+        <br>
+        <br>
+        <label for="datetwo">До: </label>
+        <input class="stats__input" type="date" name="seconddate" id="datetwo" value="<? echo $mmdays[1] ?>" min="<? echo $mmdays[0] ?>" max="<? echo $mmdays[1] ?>">
+        <span></span>
+        <br>
+        <br>
+        <input class="stats__submit" type="submit">
+      </form>
+    </div>
+    <br>
+    <br>
+    <?php
+
+    if (gettype($stats) == "string") {
+      echo "<h3>" . $stats . "</h3>";
+    } elseif (gettype($stats) == "array") {
+      if (gettype($date) == "string") echo "Статистика за $date";
+      if (gettype($date) == "array") echo "Статистика от $date[0] до $date[1]";
+      include_once("tabletemplate.php");
+    } else {
+      echo "error";
+    }
+    ?>
+
+  </div>
+
   <script>
     function valid_date() {
       let done = document.getElementById("dateone"),
