@@ -113,6 +113,17 @@ function get_statistic($dates)
 {
     if (count($dates) == 1) {
         $file = './data/' . $dates[0] . ".json";
+        if (!file_exists($file)) {
+            $template = array(
+                "servicequality" => ["good" => 0, "normal" => 0, "bad" => 0],
+                "foodquality" => ["good" => 0, "normal" => 0, "bad" => 0],
+                "assortment" => ["good" => 0, "normal" => 0, "bad" => 0]
+            );
+            $jsondata = json_encode($template);
+            $jsonfile = fopen($file, "w+");
+            fwrite($jsonfile, $jsondata);
+            fclose($jsonfile);
+        }
         $filedata = file_get_contents($file);
         $jsondata = json_decode($filedata, true);
         return $jsondata;
@@ -121,6 +132,17 @@ function get_statistic($dates)
         $files = readfiles_from_to($dates);
         $stats = generate_array_json();
         foreach ($files as $ikey => $ivalue) {
+            if (!file_exists("./data/" . $ivalue)) {
+                $template = array(
+                    "servicequality" => ["good" => 0, "normal" => 0, "bad" => 0],
+                    "foodquality" => ["good" => 0, "normal" => 0, "bad" => 0],
+                    "assortment" => ["good" => 0, "normal" => 0, "bad" => 0]
+                );
+                $jsondata = json_encode($template);
+                $jsonfile = fopen("./data/" . $ivalue, "w+");
+                fwrite($jsonfile, $jsondata);
+                fclose($jsonfile);
+            }
             $json_content = file_get_contents("./data/" . $ivalue);
             $json_data = json_decode($json_content, true);
             foreach ($json_data as $keyone => $valueone) {
@@ -176,3 +198,6 @@ function initdate()
     }
     if ($sd == "") return from_html_std_to_humaneye($fd);
 }
+/* 
+    
+}*/
