@@ -95,22 +95,14 @@ function valid_post()
         $dates[] = $x1;
         $dates[] = $x2;
         if (!file_exists("./data/" . $dates[0] . ".json")) {
-            $template = array(
-                "servicequality" => ["good" => 0, "normal" => 0, "bad" => 0],
-                "foodquality" => ["good" => 0, "normal" => 0, "bad" => 0],
-                "assortment" => ["good" => 0, "normal" => 0, "bad" => 0]
-            );
+            $template = generate_array_json();
             $jsondata = json_encode($template);
             $jsonfile = fopen("./data/" . $dates[0] . ".json", "w+");
             fwrite($jsonfile, $jsondata);
             fclose($jsonfile);
         }
         if (!file_exists("./data/" . $dates[1] . ".json")) {
-            $template = array(
-                "servicequality" => ["good" => 0, "normal" => 0, "bad" => 0],
-                "foodquality" => ["good" => 0, "normal" => 0, "bad" => 0],
-                "assortment" => ["good" => 0, "normal" => 0, "bad" => 0]
-            );
+            $template = generate_array_json();
             $jsondata = json_encode($template);
             $jsonfile = fopen("./data/" . $dates[1] . ".json", "w+");
             fwrite($jsonfile, $jsondata);
@@ -136,11 +128,7 @@ function get_statistic($dates)
     if (count($dates) == 1) {
         $file = './data/' . $dates[0] . ".json";
         if (!file_exists($file)) {
-            $template = array(
-                "servicequality" => ["good" => 0, "normal" => 0, "bad" => 0],
-                "foodquality" => ["good" => 0, "normal" => 0, "bad" => 0],
-                "assortment" => ["good" => 0, "normal" => 0, "bad" => 0]
-            );
+            $template = generate_array_json();
             $jsondata = json_encode($template);
             $jsonfile = fopen($file, "w+");
             fwrite($jsonfile, $jsondata);
