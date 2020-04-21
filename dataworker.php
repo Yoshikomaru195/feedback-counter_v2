@@ -94,6 +94,28 @@ function valid_post()
         $x2 = from_html_std_to_php($_POST["seconddate"]);
         $dates[] = $x1;
         $dates[] = $x2;
+        if (!file_exists("./data/" . $dates[0] . ".json")) {
+            $template = array(
+                "servicequality" => ["good" => 0, "normal" => 0, "bad" => 0],
+                "foodquality" => ["good" => 0, "normal" => 0, "bad" => 0],
+                "assortment" => ["good" => 0, "normal" => 0, "bad" => 0]
+            );
+            $jsondata = json_encode($template);
+            $jsonfile = fopen("./data/" . $dates[0] . ".json", "w+");
+            fwrite($jsonfile, $jsondata);
+            fclose($jsonfile);
+        }
+        if (!file_exists("./data/" . $dates[1] . ".json")) {
+            $template = array(
+                "servicequality" => ["good" => 0, "normal" => 0, "bad" => 0],
+                "foodquality" => ["good" => 0, "normal" => 0, "bad" => 0],
+                "assortment" => ["good" => 0, "normal" => 0, "bad" => 0]
+            );
+            $jsondata = json_encode($template);
+            $jsonfile = fopen("./data/" . $dates[1] . ".json", "w+");
+            fwrite($jsonfile, $jsondata);
+            fclose($jsonfile);
+        }
         $stats = get_statistic($dates);
         return $stats;
     }
@@ -131,28 +153,6 @@ function get_statistic($dates)
     if (count($dates) == 2) {
         $files = readfiles_from_to($dates);
         $stats = generate_array_json();
-        if (!file_exists("./data/" . $dates[0] . ".json")) {
-            $template = array(
-                "servicequality" => ["good" => 0, "normal" => 0, "bad" => 0],
-                "foodquality" => ["good" => 0, "normal" => 0, "bad" => 0],
-                "assortment" => ["good" => 0, "normal" => 0, "bad" => 0]
-            );
-            $jsondata = json_encode($template);
-            $jsonfile = fopen("./data/" . $dates[0] . ".json", "w+");
-            fwrite($jsonfile, $jsondata);
-            fclose($jsonfile);
-        }
-        if (!file_exists("./data/" . $dates[1] . ".json")) {
-            $template = array(
-                "servicequality" => ["good" => 0, "normal" => 0, "bad" => 0],
-                "foodquality" => ["good" => 0, "normal" => 0, "bad" => 0],
-                "assortment" => ["good" => 0, "normal" => 0, "bad" => 0]
-            );
-            $jsondata = json_encode($template);
-            $jsonfile = fopen("./data/" . $dates[1] . ".json", "w+");
-            fwrite($jsonfile, $jsondata);
-            fclose($jsonfile);
-        }
         foreach ($files as $ikey => $ivalue) {
             $json_content = file_get_contents("./data/" . $ivalue);
             $json_data = json_decode($json_content, true);
