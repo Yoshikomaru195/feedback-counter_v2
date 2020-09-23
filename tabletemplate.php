@@ -13,13 +13,13 @@
             <td><?php echo $stats["servicequality"]["bad"]; ?></td>
         </tr>
         <tr>
-            <td>Качество пищи</td>
+            <td>Качество блюд</td>
             <td><?php echo $stats["foodquality"]["good"]; ?></td>
             <td><?php echo $stats["foodquality"]["normal"]; ?></td>
             <td><?php echo $stats["foodquality"]["bad"]; ?></td>
         </tr>
         <tr>
-            <td>Ассортимент</td>
+            <td>Ассортимент блюд</td>
             <td><?php echo $stats["assortment"]["good"]; ?></td>
             <td><?php echo $stats["assortment"]["normal"]; ?></td>
             <td><?php echo $stats["assortment"]["bad"]; ?></td>

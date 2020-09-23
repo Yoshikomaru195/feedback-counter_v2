@@ -1,8 +1,13 @@
+@font-face 
+  font-family: Roboto Slab
+  src: url(../fonts/RobotoSlab-VariableFont_wght.ttf)
+
 *
   box-sizing: border-box
 
 body
-  font-family: sans-serif
+  font-family: Roboto Slab, sans-serif
+  background-color:#E0FFFF
 
 .input-radio
   display: none
@@ -34,8 +39,11 @@ body
   text-align: center
     
 .button
-  display: block
-  padding: 10px 15px
+  display: flex
+  justify-content: center
+  align-items: center
+  max-width: 240px
+  height: 60px
   font-weight: 700
   outline: none
   font-size: 25px
@@ -66,27 +74,27 @@ body
     opacity: 0.6
 
 .row
-  display: flex
-  max-width: 100%
   margin-bottom: 15px
-  justify-content: center
+  margin: auto
   align-items: center
   &:last-child
     margin-bottom: 30px
   &-buttons
     display: flex
-    justify-content: space-between
+    margin: auto
+    max-width: 60%
     align-items: center
     &__button
       opacity: 0.6
     &__title
       display: block
-      width: 150px
+      font-size: 22px
       text-align: center
     &__item
       margin-right: 10px
       justify-content: center
       text-align: center
+      flex-basis: 25%
 
 .container
   margin: auto
@@ -165,6 +173,18 @@ th:first-child, td:first-child
 @media (max-width: 1200px)
   .container
     max-width: 900px
+  .feedback__title
+    margin-bottom: 20px
+  .button
+    font-size: 20px
+  .row
+    &-buttons
+      max-width: 90%
+      &__item
+        &:last-child
+          margin-right: 0
+      &__title
+        font-size: 20px
 
 @media (max-width: 736px)
   .container 
@@ -172,71 +192,59 @@ th:first-child, td:first-child
   .logo
     margin-top: 20px
     max-width: 300px
-  .title
-    margin-bottom: 20px
-    font-size: 15px
+  .feedback__title
+    margin-bottom: 15px
+    font-size: 17px
   .row
+    margin-bottom: 10px
     &:last-child
-      margin-bottom: 25px
+      margin-bottom: 15px
     &-buttons
       flex-wrap: wrap
+      justify-content: center
+      &__button
+        margin: auto
+        margin-bottom: 5px
       &__title
         margin: auto
-        margin-bottom: 15px
+        margin-bottom: 5px
         width: 100%
       &__item
-        &:first-child
-          width: 100%
+        margin: auto
+        margin-right: 0
+        flex-basis: 100%
         &:last-child
           margin-right: 0
 
 @media (max-width: 595px)
   .feedback__title
-    font-size: 16px
-    margin-bottom: 25px
+    margin: auto
+    margin-top: 10px
+    margin-bottom: 10px
+    max-width: 300px
+    font-size: 15px
   .button
     font-size: 20px
     font-weight: 700
   .row
-    &:last-child
-      margin-bottom: 20px
-    &-buttons
-      justify-content: center
-      &__title
-        margin-bottom: 8px
-
-@media (max-width: 595px)
-  .feedback__title
-    margin-bottom: 15px
-  .row
-    &:last-child
-      margin-bottom: 15px
     &-buttons
       &__button
-        font-size: 15px
+        height: 50px
+      &__title
+        margin-bottom: 0
+      &__item
+        margin-bottom: 5px
 
 @media (max-width: 418px)
-  .button
-    display: block
-    padding: 0
-    width: 200px
-    height: 40px
-    padding-top: 10px
-    &__submit
-      font-size: 18px
-      padding-top: 0
-      &-active 
-        padding-top: 0
-        font-size: 18px
-  .title
-    font-size: 12px
   .row
+    margin-bottom: 5px
+    &:last-child
+      margin: 10px
     &-buttons
-      flex-direction: column
+      &__title
+        font-size: 18px
       &__button
-        margin-bottom: 10px
-      &__item
-        margin-right: 0
+        font-size: 18px
   .block-thx
     position: absolute
     top: 20%

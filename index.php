@@ -17,7 +17,7 @@ include_once("creatfile.php");
   <div class="container">
 
     <div class="logo"><img src="img/logo.png" alt="Логотип"></div>
-    <h2 class="feedback__title">Пожалуйста, оцените нашу работу:</h2>
+    <h2 class="feedback__title">Компания "Симпл Фуд" просит Вас оставить отзыв о нашей работе</h2>
 
     <form method="POST" action="/saverating.php" onclick="checkRadio()">
       <div class="block__rows">
@@ -32,7 +32,7 @@ include_once("creatfile.php");
             </div>
             <div class="row-buttons__item">
               <input class="input-radio" id="sqnormal" type="radio" name="servicequality" value="normal">
-              <label for="sqnormal" id="sqbtn__medium" class="button row-buttons__button button__medium">Удовлетворительно</label>
+              <label for="sqnormal" id="sqbtn__medium" class="button row-buttons__button button__medium">Нормально</label>
             </div>
             <div class="row-buttons__item">
               <input class="input-radio" id="sqbad" type="radio" name="servicequality" value="bad">
@@ -44,19 +44,19 @@ include_once("creatfile.php");
         <div class="row">
           <div class="row-buttons">
             <div class="row-buttons__item">
-              <h4 class="row-buttons__title">Качество пищи</h4>
+              <h4 class="row-buttons__title">Качество блюд</h4>
             </div>
             <div class="row-buttons__item">
               <input class="input-radio" id="fqgood" type="radio" name="foodquality" value="good">
-              <label for="fqgood" id="fqbtn__good" class="button row-buttons__button button__good">Отлично</label>
+              <label for="fqgood" id="fqbtn__good" class="button row-buttons__button button__good">Очень вкусно</label>
             </div>
             <div class="row-buttons__item">
               <input class="input-radio" id="fqnormal" type="radio" name="foodquality" value="normal">
-              <label for="fqnormal" id="fqbtn__medium" class="button row-buttons__button button__medium">Удовлетворительно</label>
+              <label for="fqnormal" id="fqbtn__medium" class="button row-buttons__button button__medium">Нормально</label>
             </div>
             <div class="row-buttons__item">
               <input class="input-radio" id="fqbad" type="radio" name="foodquality" value="bad">
-              <label for="fqbad" id="fqbtn__bad" class="button row-buttons__button button__bad">Плохо</label>
+              <label for="fqbad" id="fqbtn__bad" class="button row-buttons__button button__bad">Невозможно есть</label>
             </div>
           </div>
         </div>
@@ -64,19 +64,19 @@ include_once("creatfile.php");
         <div class="row">
           <div class="row-buttons">
             <div class="row-buttons__item">
-              <h4 class="row-buttons__title">Ассортимент</h4>
+              <h4 class="row-buttons__title">Ассортимент блюд</h4>
             </div>
             <div class="row-buttons__item">
               <input class="input-radio" id="agood" type="radio" name="assortment" value="good">
-              <label for="agood" id="abtn__good" class="button row-buttons__button button__good">Отлично</label>
+              <label for="agood" id="abtn__good" class="button row-buttons__button button__good">Большой выбор!</label>
             </div>
             <div class="row-buttons__item">
               <input class="input-radio" id="anormal" type="radio" name="assortment" value="normal">
-              <label for="anormal" id="abtn__medium" class="button row-buttons__button button__medium">Удовлетворительно</label>
+              <label for="anormal" id="abtn__medium" class="button row-buttons__button button__medium">Небольшой выбор</label>
             </div>
             <div class="row-buttons__item">
               <input class="input-radio" id="abad" type="radio" name="assortment" value="bad">
-              <label for="abad" id="abtn__bad" class="button row-buttons__button button__bad">Плохо</label>
+              <label for="abad" id="abtn__bad" class="button row-buttons__button button__bad">Выбор блюд отсутствует</label>
             </div>
           </div>
         </div>

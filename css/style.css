@@ -1,10 +1,16 @@
+@font-face {
+  font-family: Roboto Slab;
+  src: url(../fonts/RobotoSlab-VariableFont_wght.ttf);
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: Roboto Slab, sans-serif;
+  background-color: #E0FFFF;
 }
 
 .input-radio {
@@ -46,8 +52,17 @@ body {
 }
 
 .button {
-  display: block;
-  padding: 10px 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 240px;
+  height: 60px;
   font-weight: 700;
   outline: none;
   font-size: 25px;
@@ -89,14 +104,8 @@ body {
 }
 
 .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  max-width: 100%;
   margin-bottom: 15px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  margin: auto;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -110,9 +119,8 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  margin: auto;
+  max-width: 60%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -124,7 +132,7 @@ body {
 
 .row-buttons__title {
   display: block;
-  width: 150px;
+  font-size: 22px;
   text-align: center;
 }
 
@@ -134,6 +142,8 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
 }
 
 .container {
@@ -233,6 +243,21 @@ th:first-child, td:first-child {
   .container {
     max-width: 900px;
   }
+  .feedback__title {
+    margin-bottom: 20px;
+  }
+  .button {
+    font-size: 20px;
+  }
+  .row-buttons {
+    max-width: 90%;
+  }
+  .row-buttons__item:last-child {
+    margin-right: 0;
+  }
+  .row-buttons__title {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 736px) {
@@ -243,24 +268,37 @@ th:first-child, td:first-child {
     margin-top: 20px;
     max-width: 300px;
   }
-  .title {
-    margin-bottom: 20px;
-    font-size: 15px;
+  .feedback__title {
+    margin-bottom: 15px;
+    font-size: 17px;
+  }
+  .row {
+    margin-bottom: 10px;
   }
   .row:last-child {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
   .row-buttons {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .row-buttons__button {
+    margin: auto;
+    margin-bottom: 5px;
   }
   .row-buttons__title {
     margin: auto;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     width: 100%;
   }
-  .row-buttons__item:first-child {
-    width: 100%;
+  .row-buttons__item {
+    margin: auto;
+    margin-right: 0;
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
   }
   .row-buttons__item:last-child {
     margin-right: 0;
@@ -269,68 +307,39 @@ th:first-child, td:first-child {
 
 @media (max-width: 595px) {
   .feedback__title {
-    font-size: 16px;
-    margin-bottom: 25px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 300px;
+    font-size: 15px;
   }
   .button {
     font-size: 20px;
     font-weight: 700;
   }
-  .row:last-child {
-    margin-bottom: 20px;
-  }
-  .row-buttons {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+  .row-buttons__button {
+    height: 50px;
   }
   .row-buttons__title {
-    margin-bottom: 8px;
+    margin-bottom: 0;
   }
-}
-
-@media (max-width: 595px) {
-  .feedback__title {
-    margin-bottom: 15px;
-  }
-  .row:last-child {
-    margin-bottom: 15px;
-  }
-  .row-buttons__button {
-    font-size: 15px;
+  .row-buttons__item {
+    margin-bottom: 5px;
   }
 }
 
 @media (max-width: 418px) {
-  .button {
-    display: block;
-    padding: 0;
-    width: 200px;
-    height: 40px;
-    padding-top: 10px;
+  .row {
+    margin-bottom: 5px;
   }
-  .button__submit {
+  .row:last-child {
+    margin: 10px;
+  }
+  .row-buttons__title {
     font-size: 18px;
-    padding-top: 0;
-  }
-  .button__submit-active {
-    padding-top: 0;
-    font-size: 18px;
-  }
-  .title {
-    font-size: 12px;
-  }
-  .row-buttons {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
   }
   .row-buttons__button {
-    margin-bottom: 10px;
-  }
-  .row-buttons__item {
-    margin-right: 0;
+    font-size: 18px;
   }
   .block-thx {
     position: absolute;
